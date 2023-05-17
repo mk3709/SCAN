@@ -1,8 +1,8 @@
-¶Nmap Command Examples - Full Tutorial
+ # ¶Nmap Command Examples - Full Tutorial
 Let’s get to know a few useful command-line based best Nmap scans that can be performed. You can also jump directly into our Nmap Cheat Sheet to find all the tips and tricks in a single place.
 
-¶1. Basic Nmap Scan against IP or host
-nmap 1.1.1.1
+# ¶1. Basic Nmap Scan against IP or host
+ nmap 1.1.1.1
 
 Now, if you want to scan a hostname, simply replace the IP for the host, as you see below:
 
@@ -10,14 +10,14 @@ nmap cloudflare.com
 
 This kind of scans, such as the Nmap scan host are perfect for your first steps when starting with Nmap.
 
-¶2. Nmap Ping Scan
+# ¶2. Nmap Ping Scan
 nmap -sp 192.168.5.0/24
 
 The most famous type of scan is the Nmap ping scan (so-called because it’s often used to perform Nmap ping sweeps), and it’s the easiest way to detect hosts on any network.
 
 The drawback of this ICMP-only type of scan is that remote hosts often block IP-based ping packets, so if you’re unable to get solid results, we recommend switching to ARP-based requests for your scan.
 
-¶3. Scan specific ports or scan entire port ranges on a local or remote server
+# ¶3. Scan specific ports or scan entire port ranges on a local or remote server
 nmap -p 1-65535 localhost
 
 In this example, we scanned all 65535 ports for our localhost computer.
@@ -37,7 +37,7 @@ nmap 1.1.1.1,2,3,4
 
 This will scan 1.1.1.1, 1.1.1.2, 1.1.1.3 and 1.1.1.4.
 
-¶5. Scan IP ranges
+# ¶5. Scan IP ranges
 You can also use Nmap to scan entire CIDR IP ranges, for example:
 
 nmap 8.8.8.0/28
@@ -58,8 +58,8 @@ If you ever need to exclude certain IPs from the IP range scan, you can use the 
 
 nmap -p 8.8.8.* --exclude 8.8.8.1
 
-¶6. Scan the most popular ports
-Using “–top-ports” parameter along with a specific number lets you scan the top X most common ports for that host, as we can see:
+# ¶6. Scan the most popular ports
+Using “–top-ports” parameter along with a specific number lets you scan the top X most common ports for that host, as we can see: 
 
 nmap --top-ports 20 192.168.1.106
 
@@ -104,7 +104,7 @@ The “-iL” parameter lets you read from that file, and scan all those hosts f
 
 nmap -iL list.txt
 
-¶8. Save your Nmap scan results to a file
+# ¶8. Save your Nmap scan results to a file
 On the other hand, in the following example we will not be reading from a file, but exporting/saving our results into a text file:
 
 nmap -oN output.txt securitytrails.com
@@ -233,13 +233,13 @@ PORT STATE SERVICE
 49153/tcp open unknown
 As you can see, in this vulnerability test we were able to detect one CVE (Slowloris DOS attack).
 
-¶14. Launching DOS with Nmap
+# ¶14. Launching DOS with Nmap
 Nmap features never seem to end, and thanks to the NSE, that even allows us to launch DOS attacks against our network testings.
 
 In our previous example (#12) we found the host was vulnerable to Slowloris attack, and now we’ll try to exploit that vulnerability by launching a DOS attack in a forever loop:
 
 nmap 192.168.1.105 -max-parallelism 800 -Pn --script http-slowloris --script-args http-slowloris.runforever=true
-¶15. Launching brute force attacks
+# ¶15. Launching brute force attacks
 NSE is really fascinating -- it contains scripts for everything you can imagine. See the next three examples of BFA against WordPress, MSSQL, and FTP server:
 
 WordPress brute force attack:
@@ -252,7 +252,7 @@ FTP brute force attack:
 
 nmap --script ftp-brute -p 21 192.168.1.105
 
-¶16. Detecting malware infections on remote hosts
+# ¶16. Detecting malware infections on remote hosts
 Nmap is able to detect malware and backdoors by running extensive tests on a few popular OS services like on Identd, Proftpd, Vsftpd, IRC, SMB, and SMTP. It also has a module to check for popular malware signs inside remote servers and integrates Google’s Safe Browsing and VirusTotal databases as well.
 
 A common malware scan can be performed by using:
@@ -267,4 +267,3 @@ Output example:
 
 80/tcp open  http
 |_http-google-malware.nse: Host is known for distributing malware.
-Nmap is one of the most complete and accurate port scanners used by infosec professionals today. With it, you can perform simple port scan tasks or use its powerful scripting engine to launch DOS attacks, detect malware or brute force testings on remote and local servers
